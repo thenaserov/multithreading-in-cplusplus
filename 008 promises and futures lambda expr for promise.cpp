@@ -2,7 +2,7 @@
 #include <thread>
 #include <future>
 #include <iomanip>
-
+#include <math.h>
 
 float CalculatePi(int terms)
 {

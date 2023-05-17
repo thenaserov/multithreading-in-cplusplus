@@ -1,6 +1,7 @@
 #include <iostream>
 #include <thread>
 #include <iomanip>
+#include <math.h>
 
 float CalculatePi(int terms)
 {

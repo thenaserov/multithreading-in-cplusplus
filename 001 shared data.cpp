@@ -1,9 +1,10 @@
 #include <iostream>
 #include <thread>
-
+#include <atomic>
 int main()
 {
-    std::atomic<int> count = 0;
+    std::atomic<int> count;
+    count = 0;
     const int ITERATIONS = 1000;
 
     std::thread t1([&count]()
