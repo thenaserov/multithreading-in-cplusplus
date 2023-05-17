@@ -3,6 +3,7 @@
 #include <future>
 #include <iomanip>
 #include <exception>
+#include <math.h>
 
 void CalculatePi(int terms, std::promise<float> prms)
 {

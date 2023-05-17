@@ -2,6 +2,7 @@
 #include <thread>
 #include <future>
 #include <iomanip>
+#include <math.h>
 
 void CalculatePi(int terms, std::promise<float> prms)
 {
