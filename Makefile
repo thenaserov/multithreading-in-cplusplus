@@ -7,7 +7,8 @@ SRC	=		000_basic_multithreading.cpp \
 			006_calculating_PI_exercise.cpp \
 			007_promises_and_futures_function_args.cpp \
 			008_promises_and_futures_lambda_expr_for_promise.cpp \
-			009_promises_and_futures_with_exception.cpp
+			009_promises_and_futures_with_exception.cpp \
+			010_packaged_tasks.cpp
 BIN		=	$(SRC:.cpp=.exe)
 FLAGS	=	-Wextra -Werror -Wall -pthread
 
@@ -18,7 +19,7 @@ all: $(BIN)
 	@echo compiling $<
 
 clean :
-	@del -f $(BIN)
+	@del $(BIN)
 	@echo binaries are removed
 
 fclean: clean
