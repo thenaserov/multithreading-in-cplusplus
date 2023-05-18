@@ -1,15 +1,14 @@
-#include <iostream>
-#include <thread>
-#include <future>
-#include <iomanip>
 #include <math.h>
 
-float CalculatePi(int terms)
-{
+#include <future>
+#include <iomanip>
+#include <iostream>
+#include <thread>
+
+float CalculatePi(int terms) {
     float sum = 0.0;
 
-    for (int i = 0; i < terms; i++)
-    {
+    for (int i = 0; i < terms; i++) {
         int sign = pow(-1, i);
         double term = 1.0 / (i * 2 + 1);
         sum += sign * term;
@@ -18,8 +17,7 @@ float CalculatePi(int terms)
     return sum * 4;
 }
 
-int main()
-{
+int main() {
     std::promise<float> promise;
 
     auto do_calculation = [&](int terms) {
