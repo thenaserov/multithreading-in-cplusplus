@@ -8,23 +8,18 @@ SRC	=		000_basic_multithreading.cpp \
 			007_promises_and_futures_function_args.cpp \
 			008_promises_and_futures_lambda_expr_for_promise.cpp \
 			009_promises_and_futures_with_exception.cpp
-BIN		=	$(SRC:.cpp=)
+BIN		=	$(SRC:.cpp=.exe)
 FLAGS	=	-Wextra -Werror -Wall -pthread
 
-RED		=	\e[0;31m
-GREEN	=	\e[0;32m
-RESET	=	\e[0m
-
 all: $(BIN)
-	@echo
 
-%: %.cpp
-	@printf "$(GREEN)█ $(RESET)"
+%.exe: %.cpp
 	@g++ $(FLAGS) $< -o $@
+	@echo compiling $<
 
 clean :
-	@printf "$(RED)█ █ █ █ █ █ █ █ █ █$(RESET)\n"
-	@rm -f $(BIN)
+	@del -f $(BIN)
+	@echo binaries are removed
 
 fclean: clean
 
