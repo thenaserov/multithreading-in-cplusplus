@@ -1,13 +1,33 @@
-.PHONY = build:
+SRC	=		000_basic_multithreading.cpp \
+			001_shared_data.cpp \
+			002_mutexes.cpp \
+			003_passing_arguments.cpp \
+			004_lock_guard.cpp \
+			005_threads_with_callable_objects.cpp \
+			006_calculating_PI_exercise.cpp \
+			007_promises_and_futures_function_args.cpp \
+			008_promises_and_futures_lambda_expr_for_promise.cpp \
+			009_promises_and_futures_with_exception.cpp
+BIN		=	$(SRC:.cpp=)
+FLAGS	=	-Wextra -Werror -Wall -pthread
 
-build:
-	g++ -pthread 000\ basic\ multithreading.cpp -o basic_multithreading \
-	g++ -pthread 001\ shared\ data.cpp -o shared_data \
-	g++ -pthread 002\ mutexes.cpp -o mutexes \
-	g++ -pthread 003\ passing\ arguments.cpp -o passing_arguments \
-	g++ -pthread 004\ lock_guard.cpp -o lock_guard \
-	g++ -pthread 005\ threads\ with\ callable\ objects.cpp -o threads_with_callable_objects \
-	g++ -pthread 006\ calculating\ PI\ exercise.cpp -o calculating_pi \
-	g++ -pthread 007\ promises\ and\ futures\ function\ args.cpp -o promises_and_future \
-	g++ -pthread 008\ promises\ and\ futures\ lambda\ expr\ for\ promise.cpp -o mutexes \
-	g++ -pthread 009\ promises\ and\ futures\ with\ exception.cpp -o promises_and_futures_with_exception 
+RED		=	\e[0;31m
+GREEN	=	\e[0;32m
+RESET	=	\e[0m
+
+all: $(BIN)
+	@echo
+
+%: %.cpp
+	@printf "$(GREEN)█ $(RESET)"
+	@g++ $(FLAGS) $< -o $@
+
+clean :
+	@printf "$(RED)█ █ █ █ █ █ █ █ █ █$(RESET)\n"
+	@rm -f $(BIN)
+
+fclean: clean
+
+re: fclean all
+
+.PHONY: all clean fclean re
