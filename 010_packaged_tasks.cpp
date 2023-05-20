@@ -7,7 +7,7 @@
 
 double CalculatePi(int terms)
 {
-    double sum = 0.0;
+    double result = 0.0;
     if (terms < 1)
     {
         throw std::runtime_error("Terms cannot be less than 1");
@@ -16,9 +16,9 @@ double CalculatePi(int terms)
     {
         int sign = pow(-1, i);
         double term = 1.0 / (i * 2 + 1);
-        sum += sign * term;
+        result += sign * term;
     }
-    return sum * 4;
+    return result * 4;
 }
 
 int main()
