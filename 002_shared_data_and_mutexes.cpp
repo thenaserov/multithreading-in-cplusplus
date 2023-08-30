@@ -8,7 +8,7 @@ int main()
 	const int ITERATIONS = 1'000'000;
 	std::mutex mtx;
 
-	std::thread t1([&count, &mtx]() {
+	std::thread t1([&count, &ITERATIONS, &mtx]() {
 		mtx.lock();
 		for (int i{ 0 }; i < ITERATIONS; i++)
 		{
@@ -17,7 +17,7 @@ int main()
 		mtx.unlock();
 	});
 
-	std::thread t2([&count, &mtx]() {
+	std::thread t2([&count, &ITERATIONS, &mtx]() {
 		mtx.lock();
 		for (int i{ 0 }; i < ITERATIONS; i++)
 		{
