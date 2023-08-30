@@ -9,7 +9,7 @@ int main()
     count = 0;
     const int ITERATIONS = 1000;
 
-    std::thread t1([&count]()
+    std::thread t1([&count, &ITERATIONS]()
     {
         for (int i = 0; i < ITERATIONS; i++)
         {
@@ -17,7 +17,7 @@ int main()
         }
     });
 
-    std::thread t2([&count]()
+    std::thread t2([&count, &ITERATIONS]()
     {
         for (int i = 0; i < ITERATIONS; i++)
         {
