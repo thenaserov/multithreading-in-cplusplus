@@ -10,3 +10,7 @@ make clean # clean the files no need after linking
 make fclean # clean everything just before running make
 make re # fclean and all 
 ```
+
+After learning launching threads and shared data mangement, you can simply follow this project
+to understand more of threading usages:
+https://github.com/thenaserov/cpp_multithreaded_file_organizer
