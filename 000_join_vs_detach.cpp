@@ -2,14 +2,22 @@
 #include <thread>
 #include <chrono>
 
+//Thread routine that takes more time to execute
 void fun(){
-    std::this_thread::sleep_for(std::chrono::milliseconds(2'000));
-    std::cout << "in fun" << std::endl;
+    for(int i=0; i<5; i++)
+    {
+        std::this_thread::sleep_for(std::chrono::milliseconds(1'000));
+        std::cout << "in fun. count: " << i + 1 << std::endl;
+    }
 }
 
+//Thread routine that takes lesser time to execute
 void fun2(){
-    std::this_thread::sleep_for(std::chrono::milliseconds(2'000));
-    std::cout << "in fun2" << std::endl;
+    for(int i=0; i<5; i++)
+    {
+        std::this_thread::sleep_for(std::chrono::milliseconds(500));
+        std::cout << "in fun2. count: " << i + 1 << std::endl;
+    }
 }
 
 int main(){
@@ -19,3 +27,14 @@ int main(){
     t2.join();
     return 0;
 }
+
+/*
+Output:
+in fun2. count: 1
+in fun. count: 1
+in fun2. count: 2
+in fun2. count: 3
+in fun. count: 2
+in fun2. count: 4
+in fun2. count: 5
+*/
