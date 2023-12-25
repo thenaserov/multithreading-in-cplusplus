@@ -7,12 +7,13 @@
 #include <cmath>
 #include <iomanip>
 
+using ll = long long;
 
-double calculate_pi(int terms, int start, int skip)
+double calculate_pi(ll terms, int start, int skip)
 {
     double sum = 0.0;
 
-    for (int i = start; i < terms; i += skip)
+    for (ll i = start; i < terms; i += skip)
     {
         int sign = pow(-1, i);
         double term = 1.0 / (i * 2 + 1);
