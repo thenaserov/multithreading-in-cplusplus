@@ -1,45 +1,35 @@
 //lets calculate the sum of n numbers parallely using std::async
 #include <iostream>
+#include <iomanip>
 #include <vector>
 #include <future>
-#include <algorithm>
+#include <cmath>
 
-int main()
-{
-    constexpr int n = 1'000'000;
-    std::vector<int> nums(n, 0);
-    std::generate(nums.begin(), nums.end(), [n = 1]() mutable {return n++;}); //fill the vector with sequential numbers
+double CalculatePi(int terms, int start, int skip) {
+    double result{ 0 };
+    for (int i{start}; i < terms; i += skip) {
+        int sign = std::pow(-1, i);
+        double term = 1.0 / (i * 2 + 1);
+        result += sign * term;
+    }
+    return result * 4;
+}
+
+int main() {
+    constexpr int terms{ 1'000'000'000 };
 
     int parts_count = std::thread::hardware_concurrency(); //the no of parallel units that processes the vector
-    size_t chunkSize = n / parts_count;
-
-    auto calculate_chunk_sum = [&nums](size_t start, size_t end) {
-        long long sum = 0;
-        for (size_t i = start; i < end; ++i) {
-            sum += nums[i];
-        }
-        return sum;
-    };
-
-    std::vector<std::future<long long>> parts_sum_futures;
-    for (int i = 0; i < parts_count; i++)
-    {
-        size_t start = i * chunkSize;
-        size_t end = (i == parts_count - 1) ? n : (i + 1) * chunkSize;
-
-        auto result = std::async(
-            calculate_chunk_sum,
-            start, 
-            end);
-
-        parts_sum_futures.emplace_back(std::move(result));
+    std::vector<std::shared_future<double>> futures;
+    for (int i {0}; i < parts_count; i++) {
+        std::shared_future<double> result = std::async(std::launch::async, CalculatePi, terms, i, parts_count);
+        futures.push_back(std::move(result));
     }
 
-    long long total_sum = 0ll;
-    for (auto& future : parts_sum_futures) {
-        total_sum += future.get(); //wait and get the result of each async
+    double total{0};
+    for (auto& future : futures) {
+        total += future.get();
     }
 
-    std::cout << total_sum << std::endl;
+    std::cout << std::setprecision(30) << total << std::endl;
     return 0;
 }
