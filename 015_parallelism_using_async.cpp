@@ -4,8 +4,6 @@
 #include <future>
 #include <algorithm>
 
-using namespace std;
-
 int main()
 {
     constexpr int n = 1'000'000;
