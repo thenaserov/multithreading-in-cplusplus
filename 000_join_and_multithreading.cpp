@@ -6,7 +6,7 @@ void work()
 {
     for (int i = 0; i < 10; i++)
     {
-        std::this_thread::sleep_for(std::chrono::milliseconds(500));
+        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
         std::cout << "Loop " << i << std::endl;
     }
 }

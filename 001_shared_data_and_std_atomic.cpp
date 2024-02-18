@@ -7,7 +7,7 @@ int main()
 {
     std::atomic<int> count;
     count = 0;
-    const int ITERATIONS = 1000;
+    const int ITERATIONS = 1000000;
 
     std::thread t1([&count, &ITERATIONS]()
     {
