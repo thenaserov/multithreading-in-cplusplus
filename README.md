@@ -1,6 +1,7 @@
 # multithreading-in-cplusplus
 
 All codes were written in C++14
+I am using MSVC
 New exercises should be added
 
 makefile usage:
