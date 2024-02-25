@@ -15,3 +15,6 @@ make re # fclean and all
 After learning launching threads and shared data mangement, you can simply follow this project
 to understand more of threading usages:
 https://github.com/thenaserov/cpp_multithreaded_file_organizer
+
+Also check out log_mediator_cpp:
+https://github.com/thenaserov/log_mediator_cpp
