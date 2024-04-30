@@ -33,7 +33,7 @@ int main()
 {
 	std::promise<float> prms;
 	std::future<float> ftr = prms.get_future();
-	std::thread t1(std::ref(CalculatePi), -2, std::move(prms));
+	std::thread t1(std::ref(CalculatePi), 1E9, std::move(prms));
 	try
 	{
 		std::cout << std::setprecision(20) << ftr.get() << std::endl;
