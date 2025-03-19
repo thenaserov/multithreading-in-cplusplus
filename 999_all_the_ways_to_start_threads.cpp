@@ -44,7 +44,7 @@ int main() {
     execute(t);
 
     // 2. Lambda Expression
-    std::thread t_lambda([](int i) {
+    std::thread t_lambda([=](int i) {
         std::cout << "In lambda expr" << std::endl;
         std::cout << i << std::endl;
     }, i);
