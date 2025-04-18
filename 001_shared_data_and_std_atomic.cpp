@@ -28,5 +28,5 @@ int main()
     t1.join();
     t2.join();
 
-	std::cout << count << std::endl;
+    std::cout << count << std::endl;
 }
